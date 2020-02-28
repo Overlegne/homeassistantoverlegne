@@ -1,0 +1,57 @@
+      - card:
+          cards:
+            - card:
+                entity: sensor.afval
+                name_template: >-
+                  {%- if is_state("sensor.afval", "0")%} Vandaag {% elif
+                  is_state("sensor.afval", "1")%} Morgen {% else %} {{
+                  states.sensor.afval.attributes.days }} dagen {%- endif %}
+                show_name: true
+                show_state: false
+                state_image:
+                  '0': /local/images/trash_card/afval.png
+                  '1': /local/images/trash_card/afval.png
+                  '2': /local/images/trash_card/afvalgrijs.png
+                type: picture-entity
+              entities:
+                - sensor.afval
+              type: 'custom:card-templater'
+            - card:
+                entity: sensor.gft
+                name_template: >-
+                  {%- if is_state("sensor.gft", "0")%} Vandaag {% elif
+                  is_state("sensor.gft", "1")%} Morgen {% else %} {{
+                  states.sensor.gft.attributes.days }} dagen {%- endif %}
+                show_name: true
+                show_state: false
+                state_image:
+                  '0': /local/images/trash_card/gft.png
+                  '1': /local/images/trash_card/gft.png
+                  '2': /local/images/trash_card/gftgrijs.png
+                type: picture-entity
+              entities:
+                - sensor.gft
+              type: 'custom:card-templater'
+            - card:
+                entity: sensor.pmd
+                name_template: >-
+                  {%- if is_state("sensor.pmd", "0")%} Vandaag {% elif
+                  is_state("sensor.pmd", "1")%} Morgen {% else %} {{
+                  states.sensor.pmd.attributes.days }} dagen {%- endif %}
+                show_name: true
+                show_state: false
+                state_image:
+                  '0': /local/images/trash_card/pmd.png
+                  '1': /local/images/trash_card/pmd.png
+                  '2': /local/images/trash_card/pmdgrijs.png
+                type: picture-entity
+              entities:
+                - sensor.pmd
+              type: 'custom:card-templater'
+          type: horizontal-stack
+        style: |
+          ha-card {
+            radius: 10px;
+            text-align: center
+          }
+        type: 'custom:auto-entities'
